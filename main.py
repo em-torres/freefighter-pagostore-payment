@@ -42,9 +42,9 @@ def click_if_exists(drv, element):
     print("-----" + element + " not found -----")
     drv.quit()
 
-def fill_if_exists(drv, element):
+def fill_if_exists(drv, element, content):
     if element:
-        element.send_keys(user_id)
+        element.send_keys(content)
         return
     print("-----" + element + " not found -----")
     drv.quit()
@@ -70,8 +70,8 @@ click_if_exists(driver, el_free_fire_second_button)
 
 # while exec_runtime > 0:    
 #     el_user_id_field = wait_for_element(driver, By.XPATH, '//input[@placeholder="ID de jugador"]')
-#     fill_if_exists(driver, "")
-#     fill_if_exists(driver, el_user_id_field)
+    # fill_if_exists(driver, el_user_id_field, "")
+    # fill_if_exists(driver, el_user_id_field, user_id)
 #     el_captcha_box = check_if_element_exist(driver, By.CSS_SELECTOR, '.recaptcha-checkbox-border')
 #     el_btn_submit_freefire_userid = wait_for_element(driver, By.XPATH, '//input[@value="Ingresar"]')
 
@@ -89,10 +89,11 @@ click_if_exists(driver, el_free_fire_second_button)
 #         exec_runtime-=1
     
 el_user_id_field = wait_for_element(driver, By.XPATH, '//input[@placeholder="ID de jugador"]')
-fill_if_exists(driver, "")
-fill_if_exists(driver, el_user_id_field)
-el_captcha_box = check_if_element_exist(driver, By.CSS_SELECTOR, '.recaptcha-checkbox-border')
+el_user_id_field.clear()
+fill_if_exists(driver, el_user_id_field, user_id)
+el_captcha_box = check_if_element_exist(driver, By.CLASS_NAME, 'recaptcha-checkbox-border')
 el_btn_submit_freefire_userid = wait_for_element(driver, By.XPATH, '//input[@value="Ingresar"]')
+print(el_captcha_box)
 
 if el_captcha_box:
     click_if_exists(driver, el_captcha_box)
@@ -101,32 +102,39 @@ if el_captcha_box:
 else:
     click_if_exists(driver, el_btn_submit_freefire_userid)
 
+
 time.sleep(3)
-el_box_user_id = check_if_element_exist(driver, By.XPATH, '//*[contains(text(), "Inicia sesión con tu ID de jugador")]')
-
-if not el_box_user_id:
-    exec_runtime-=1
-
-
 el_user_id_field = wait_for_element(driver, By.XPATH, '//input[@placeholder="ID de jugador"]')
-fill_if_exists(driver, "")
-fill_if_exists(driver, el_user_id_field)
-el_captcha_box = check_if_element_exist(driver, By.CSS_SELECTOR, '.recaptcha-checkbox-border')
+el_user_id_field.clear()
+fill_if_exists(driver, el_user_id_field, user_id)
+el_captcha_box = check_if_element_exist(driver, By.CLASS_NAME, 'recaptcha-checkbox-border')
 el_btn_submit_freefire_userid = wait_for_element(driver, By.XPATH, '//input[@value="Ingresar"]')
+print(el_captcha_box)
 
 if el_captcha_box:
+    print("FOUND CAPTCHA")
     click_if_exists(driver, el_captcha_box)
     time.sleep(3)
     click_if_exists(driver, el_btn_submit_freefire_userid)
 else:
     click_if_exists(driver, el_btn_submit_freefire_userid)
 
+
 time.sleep(3)
-el_box_user_id = check_if_element_exist(driver, By.XPATH, '//*[contains(text(), "Inicia sesión con tu ID de jugador")]')
+el_user_id_field = wait_for_element(driver, By.XPATH, '//input[@placeholder="ID de jugador"]')
+el_user_id_field.clear()
+fill_if_exists(driver, el_user_id_field, user_id)
+el_captcha_box = check_if_element_exist(driver, By.CLASS_NAME, 'recaptcha-checkbox-border')
+el_btn_submit_freefire_userid = wait_for_element(driver, By.XPATH, '//input[@value="Ingresar"]')
+print(el_captcha_box)
 
-if not el_box_user_id:
-    exec_runtime-=1
-
+if el_captcha_box:
+    print("FOUND CAPTCHA")
+    click_if_exists(driver, el_captcha_box)
+    time.sleep(3)
+    click_if_exists(driver, el_btn_submit_freefire_userid)
+else:
+    click_if_exists(driver, el_btn_submit_freefire_userid)
 
 
 
