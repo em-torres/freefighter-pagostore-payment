@@ -16,6 +16,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 AUDIO_TO_TEXT_DELAY = 10
 DELAY_TIME = 2
 FILENAME = '1.mp3'
+GOOGLE_IBM_LINK = "https://speech-to-text-demo.ng.bluemix.net/"
 WAIT_TIME = 15
 WAIT_INLINE_TIME = 5
 
@@ -118,7 +119,7 @@ def audio_to_text(drv, mp3_path):
     drv.execute_script('''window.open("","_blank");''')
     drv.switch_to.window(drv.window_handles[1])
     print("2")
-    drv.get(googleIBMLink)
+    drv.get(GOOGLE_IBM_LINK)
     # Upload file
     time.sleep(DELAY_TIME)
     print("3")
@@ -126,7 +127,7 @@ def audio_to_text(drv, mp3_path):
     time.sleep(DELAY_TIME)
     root = drv.wait_for_element(drv, By.ID, 'root').wait_for_element(drv, By.CLASS_NAME, 'dropzone _container _container_large')
     btn = drv.wait_for_element(drv, By.XPATH, '//*[@id="root"]/div/input')
-    btn.send_keys('C:/Users/AbdulBasit/Documents/google-captcha-bypass/1.mp3')
+    btn.send_keys('C:/1.mp3')
     # Audio to text is processing
     time.sleep(DELAY_TIME)
     print("4")
