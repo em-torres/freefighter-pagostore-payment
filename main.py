@@ -181,6 +181,10 @@ def ffpsp_enter_by_userid(driver):
             loop=False
     return False
 
+def ffpsp_logout_user(drv):
+    time.sleep(WAIT_INLINE_TIME)
+    el_btn_logout = wait_for_element(drv, By.XPATH, '//input[@value="Salir del modo de ID de jugador"]')
+    click_if_exists(drv, el_btn_logout)
 
     
 
@@ -198,8 +202,8 @@ driver = webdriver.Chrome(
 # RUNTIME
 open_website(driver, "https://pagostore.com")
 entered = ffpsp_enter_by_userid(driver)
-print(entered)
-
+# if entered:
+    # ffpsp_logout_user(driver)
 
 time.sleep(WAIT_TIME)
 
