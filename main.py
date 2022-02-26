@@ -2,6 +2,7 @@ from ast import Pass
 from fileinput import filename
 import os, requests, sys, time, unittest
 from bs4 import BeautifulSoup
+from helpers.constants import URL
 from http_request_randomizer.requests.proxy.requestProxy import RequestProxy
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options as ChromeOptions
@@ -22,7 +23,7 @@ WAIT_INLINE_TIME = 5
 
 # VARIABLES
 user_id = 2803902007
-cantidad_diamantes = 100
+diamonds = 100
 
 # FUNCTIONS
 def open_website(drv, url):
